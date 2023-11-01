@@ -19,7 +19,7 @@ export const DynamicLayout: FC<DynamicLayoutProps> = ({ fieldSet, renderComponen
             ))}
           </Styled.Row>
         ) : (
-          <Styled.Row key={d.id}>{renderComponent(d)}</Styled.Row>
+          <Styled.Col key={d.id}>{renderComponent(d)}</Styled.Col>
         );
       })}
     </Styled.Container>

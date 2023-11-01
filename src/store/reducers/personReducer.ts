@@ -1,18 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { Person } from "types";
 
 export interface PersonState {
-  [key: string]: string | undefined;
+  data: Person;
 }
 
-const initialState: PersonState = {};
+const initialState: PersonState = {
+  data: {},
+};
 
 export const personSlice = createSlice({
   name: "person",
   initialState,
   reducers: {
-    setPersonAction: (state, action: PayloadAction<PersonState>) => {
-      state = action.payload;
+    setPersonAction: (state, action: PayloadAction<Person>) => {
+      state.data = action.payload;
     },
   },
 });

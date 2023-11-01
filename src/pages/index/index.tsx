@@ -6,22 +6,31 @@ import { FIELD_SET } from "constants/field-set";
 import { Button, Card, Input, Label, Option, Select, Textarea } from "components/common";
 import { createYupSchema } from "./helpers";
 import * as Styled from "./index.styles";
-import { PersonState } from "store/reducers/personReducer";
-import { useAppDispatch } from "hooks";
+import { useAppDispatch, useAppSelector } from "hooks";
 import { SET_PERSON } from "store/types";
+import { useNavigate } from "react-router-dom";
+import { routes } from "constants/routes";
+import { FormEvent, useState } from "react";
+import { capitalCase } from "change-case";
 
 export const Index = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const [submitTried, setSubmitTried] = useState(false);
+  const { data } = useAppSelector((state) => state.person);
 
   const formik = useFormik({
-    initialValues: {} as PersonState,
+    initialValues: data,
     validationSchema: yup.object().shape(createYupSchema(FIELD_SET)),
     onSubmit: (values) => {
       dispatch({ type: SET_PERSON, payload: values });
+      navigate(routes.thankyou);
     },
   });
 
   const renderComponent = (field: Field) => {
+    const label = capitalCase(field.id);
+
     const render = () => {
       switch (field.type) {
         case "text":
@@ -32,7 +41,7 @@ export const Index = () => {
               aria-required={field.required}
               type="text"
               aria-label={field.id}
-              placeholder={field.placeholder ?? field.id}
+              placeholder={field.placeholder ?? label}
               value={formik.values[field.id]}
               onChange={formik.handleChange}
             />
@@ -44,7 +53,7 @@ export const Index = () => {
               name={field.id}
               aria-required={field.required}
               aria-label={field.id}
-              placeholder={field.placeholder ?? field.id}
+              placeholder={field.placeholder ?? label}
               value={formik.values[field.id]}
               onChange={formik.handleChange}
             />
@@ -56,10 +65,11 @@ export const Index = () => {
               name={field.id}
               aria-required={field.required}
               aria-label="field.id"
-              placeholder={field.placeholder ?? field.id}
+              placeholder={field.placeholder ?? label}
               value={formik.values[field.id]}
               onChange={formik.handleChange}
             >
+              <Option value=""></Option>
               {field.options.map((v) => (
                 <Option key={v} value={v}>
                   {v}
@@ -73,19 +83,25 @@ export const Index = () => {
     return (
       <div>
         <Label htmlFor={field.id} aria-required={field.required}>
-          {field.placeholder ?? field.id} {!!field.required && "*"}
+          {label} {!!field.required && "*"}
         </Label>
         {render()}
-        {formik.touched[field.id] && formik.errors[field.id] && (
+        {submitTried && formik.errors[field.id] && (
           <Styled.ErrorText>{formik.errors[field.id]}</Styled.ErrorText>
         )}
       </div>
     );
   };
 
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitTried(true);
+    formik.handleSubmit();
+  };
+
   return (
     <Card>
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <DynamicLayout fieldSet={FIELD_SET} renderComponent={renderComponent} />
         <Button type="submit">Submit</Button>
       </form>
