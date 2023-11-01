@@ -2,6 +2,7 @@ import { Index } from "./pages/index";
 import { ThankYou } from "./pages/thank-you";
 import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom";
 import { routes } from "./constants/routes";
+import * as Styled from "./App.styles";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <Styled.Container>
+      <RouterProvider router={router} />
+    </Styled.Container>
+  );
 }
 
 export default App;
