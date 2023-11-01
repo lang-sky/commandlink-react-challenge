@@ -4,15 +4,20 @@ import { DynamicLayout } from "components/DynamicLayout";
 import { Field } from "types/field";
 import { FIELD_SET } from "constants/field-set";
 import { Button, Card, Input, Label, Option, Select, Textarea } from "components/common";
-import { createInitialData, createYupSchema } from "./helpers";
+import { createYupSchema } from "./helpers";
 import * as Styled from "./index.styles";
+import { PersonState } from "store/reducers/personReducer";
+import { useAppDispatch } from "hooks";
+import { SET_PERSON } from "store/types";
 
 export const Index = () => {
+  const dispatch = useAppDispatch();
+
   const formik = useFormik({
-    initialValues: { ...createInitialData(FIELD_SET) },
+    initialValues: {} as PersonState,
     validationSchema: yup.object().shape(createYupSchema(FIELD_SET)),
     onSubmit: (values) => {
-      console.log("submit", values);
+      dispatch({ type: SET_PERSON, payload: values });
     },
   });
 

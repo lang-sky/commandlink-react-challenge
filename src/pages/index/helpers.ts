@@ -25,13 +25,3 @@ export const createYupSchema = (fieldSet: (Field | Field[])[]) => {
     return schema;
   }, {} as { [key: string]: yup.StringSchema });
 };
-
-export const createInitialData = (
-  fieldSet: (Field | Field[])[]
-): { [key: string]: string | undefined } => {
-  const data: { [key: string]: string | undefined } = {};
-  fieldSet.flat().forEach((d) => {
-    data[d.id] = undefined;
-  });
-  return data;
-};
