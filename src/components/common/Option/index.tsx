@@ -1,10 +1,6 @@
-import { FC, HTMLProps } from "react";
+import { FC, OptionHTMLAttributes } from "react";
 import * as Styled from "./index.styles";
 
-interface InputProps {
-  props?: HTMLProps<HTMLOptionElement>;
-}
-
-export const Option: FC<InputProps> = ({ props }) => {
+export const Option: FC<OptionHTMLAttributes<HTMLOptionElement>> = (props) => {
   return <Styled.Option {...props} />;
 };

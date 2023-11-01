@@ -8,6 +8,8 @@ export const Row = styled.div<{ $cols?: number }>`
   display: grid;
   width: 100%;
   grid-template-columns: ${({ $cols = 1 }) => `repeat(${$cols}, 1fr)`};
+  gap: 20px;
+  margin: 20px 0;
 `;
 
 export const Col = styled.div`

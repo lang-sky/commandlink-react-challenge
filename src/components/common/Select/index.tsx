@@ -1,10 +1,6 @@
-import { FC, HTMLProps } from "react";
+import { FC, SelectHTMLAttributes } from "react";
 import * as Styled from "./index.styles";
 
-interface InputProps {
-  props?: HTMLProps<HTMLSelectElement>;
-}
-
-export const Select: FC<InputProps> = ({ props }) => {
+export const Select: FC<SelectHTMLAttributes<HTMLSelectElement>> = (props) => {
   return <Styled.Select {...props} />;
 };

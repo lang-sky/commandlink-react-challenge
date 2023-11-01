@@ -1,10 +1,6 @@
-import { FC, HTMLProps } from "react";
+import { FC, InputHTMLAttributes } from "react";
 import * as Styled from "./index.styles";
 
-interface InputProps {
-  props?: HTMLProps<HTMLInputElement>;
-}
-
-export const Input: FC<InputProps> = ({ props }) => {
+export const Input: FC<InputHTMLAttributes<HTMLInputElement>> = (props) => {
   return <Styled.Input {...props} />;
 };

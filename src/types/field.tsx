@@ -9,6 +9,7 @@ export interface SelectField {
   id: string;
   options: Array<string>;
   placeholder?: string;
+  required?: boolean;
   type: "select";
 }
 

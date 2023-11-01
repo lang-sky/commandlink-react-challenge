@@ -1,10 +1,6 @@
-import { FC, HTMLProps } from "react";
+import { FC, LabelHTMLAttributes } from "react";
 import * as Styled from "./index.styles";
 
-interface InputProps {
-  props?: HTMLProps<HTMLLabelElement>;
-}
-
-export const Label: FC<InputProps> = ({ props }) => {
+export const Label: FC<LabelHTMLAttributes<HTMLLabelElement>> = (props) => {
   return <Styled.Label {...props} />;
 };
