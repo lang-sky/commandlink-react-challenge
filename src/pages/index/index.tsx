@@ -2,7 +2,6 @@ import * as yup from "yup";
 import { Form, Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { DynamicLayout } from "components/DynamicLayout";
-import { FIELD_SET } from "constants/field-set";
 import { Button, Card } from "components/common";
 import { createYupSchema } from "./helpers";
 import { useAppDispatch, useAppSelector } from "hooks";
@@ -21,7 +20,7 @@ export const Index: FC<IndexProps> = ({ fieldSet }) => {
   const navigate = useNavigate();
   const { data } = useAppSelector((state) => state.person);
 
-  const validationSchema = yup.object().shape(createYupSchema(FIELD_SET));
+  const validationSchema = yup.object().shape(createYupSchema(fieldSet));
 
   const handleSubmit = (values: Person) => {
     dispatch({ type: SET_PERSON, payload: values });
@@ -33,7 +32,9 @@ export const Index: FC<IndexProps> = ({ fieldSet }) => {
       <Formik initialValues={data} validationSchema={validationSchema} onSubmit={handleSubmit}>
         <Form>
           <DynamicLayout fieldSet={fieldSet} FieldComponent={LabeledFormField} />
-          <Button type="submit">Submit</Button>
+          <Button type="submit" aria-label="submit">
+            Submit
+          </Button>
         </Form>
       </Formik>
     </Card>

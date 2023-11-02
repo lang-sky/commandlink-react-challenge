@@ -15,8 +15,8 @@ export const LabeledFormField: FC<{ field: Field }> = ({ field }) => {
 
   return (
     <div>
-      <Label htmlFor={field.id} aria-required={field.required}>
-        {label} {!!field.required && "*"}
+      <Label htmlFor={field.id} aria-required={field.required} $required={field.required}>
+        {label}
       </Label>
       <FormField field={field} />
       {!!submitCount && !!error && <Styled.ErrorText>{error}</Styled.ErrorText>}

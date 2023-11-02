@@ -1,6 +1,8 @@
 import { FC, LabelHTMLAttributes } from "react";
 import * as Styled from "./index.styles";
 
-export const Label: FC<LabelHTMLAttributes<HTMLLabelElement>> = (props) => {
+type LabelProps = LabelHTMLAttributes<HTMLLabelElement> & { $required?: boolean };
+
+export const Label: FC<LabelProps> = (props) => {
   return <Styled.Label {...props} />;
 };

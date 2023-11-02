@@ -48,7 +48,7 @@ export const FormField: FC<{ field: Field }> = ({ field }) => {
           value={value}
           onChange={handleChange}
         >
-          <Option value=""></Option>
+          <Option value="">{field.placeholder ?? ""}</Option>
           {field.options.map((v) => (
             <Option key={v} value={v}>
               {v}
