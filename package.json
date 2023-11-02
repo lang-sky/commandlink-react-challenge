@@ -39,7 +39,10 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "testing-library/no-unnecessary-act": 0
+    }
   },
   "browserslist": {
     "production": [

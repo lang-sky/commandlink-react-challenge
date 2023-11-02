@@ -8,10 +8,15 @@ import { createYupSchema } from "./helpers";
 import { useAppDispatch, useAppSelector } from "hooks";
 import { SET_PERSON } from "store/types";
 import { routes } from "constants/routes";
-import { Person } from "types";
+import { Field, Person } from "types";
 import { LabeledFormField } from "./components/LabeledFormField";
+import { FC } from "react";
 
-export const Index = () => {
+interface IndexProps {
+  fieldSet: Array<Array<Field> | Field>;
+}
+
+export const Index: FC<IndexProps> = ({ fieldSet }) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { data } = useAppSelector((state) => state.person);
@@ -27,7 +32,7 @@ export const Index = () => {
     <Card>
       <Formik initialValues={data} validationSchema={validationSchema} onSubmit={handleSubmit}>
         <Form>
-          <DynamicLayout fieldSet={FIELD_SET} FieldComponent={LabeledFormField} />
+          <DynamicLayout fieldSet={fieldSet} FieldComponent={LabeledFormField} />
           <Button type="submit">Submit</Button>
         </Form>
       </Formik>

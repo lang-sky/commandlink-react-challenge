@@ -21,7 +21,7 @@ export const FormField: FC<{ field: Field }> = ({ field }) => {
           type="text"
           aria-label={field.id}
           placeholder={field.placeholder ?? label}
-          value={value}
+          value={value ?? ""}
           onChange={handleChange}
         />
       );
@@ -33,7 +33,7 @@ export const FormField: FC<{ field: Field }> = ({ field }) => {
           aria-required={field.required}
           aria-label={field.id}
           placeholder={field.placeholder ?? label}
-          value={value}
+          value={value ?? ""}
           onChange={handleChange}
         />
       );
