@@ -2,7 +2,7 @@ import { FC } from "react";
 import * as Styled from "./index.styles";
 import { Field } from "types/field";
 
-interface DynamicLayoutProps {
+export interface DynamicLayoutProps {
   fieldSet: Array<Array<Field> | Field>;
   FieldComponent: FC<{ field: Field }>;
 }

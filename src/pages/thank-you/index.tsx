@@ -1,3 +1,6 @@
+import { Navigate } from "react-router-dom";
+import { routes } from "constants/routes";
+
 import { DynamicLayout } from "components/DynamicLayout";
 import { Card } from "components/common";
 import { FIELD_SET } from "constants/field-set";
@@ -9,7 +12,7 @@ export const ThankYou = () => {
   const { data } = useAppSelector((state) => state.person);
 
   if (!data.firstName) {
-    // return <Navigate to={routes.index} />;
+    return <Navigate to={routes.index} />;
   }
 
   return (

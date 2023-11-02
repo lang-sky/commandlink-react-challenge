@@ -1,7 +1,7 @@
 import { SET_PERSON } from "store/types";
-import { setPerson } from "./personSaga";
+import { setPerson } from "../personSaga";
 import { Person } from "types";
-import { setPersonAction } from "store/reducers/personReducer";
+import { setPersonAction } from "store/features/personSlice";
 import { put } from "redux-saga/effects";
 
 describe("personSaga", () => {
