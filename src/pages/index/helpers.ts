@@ -14,6 +14,7 @@ export const createYupSchema = (fieldSet: (Field | Field[])[]) => {
       validator = validator.matches(phoneRegExp, "Phone number is not valid");
     }
     if (id === "email") {
+      // yup email validation is not correct, this can be changed by email regex check
       validator = validator.email();
     }
     schema[id] = validator;
