@@ -4,7 +4,7 @@ import { setPersonAction } from "store/reducers/personReducer";
 import { SET_PERSON } from "store/types";
 import { Person } from "types";
 
-function* setPerson(action: PayloadAction<Person>) {
+export function* setPerson(action: PayloadAction<Person>) {
   yield put(setPersonAction(action.payload));
 }
 

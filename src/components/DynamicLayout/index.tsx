@@ -1,13 +1,13 @@
-import { FC, ReactElement } from "react";
+import { FC } from "react";
 import * as Styled from "./index.styles";
 import { Field } from "types/field";
 
 interface DynamicLayoutProps {
   fieldSet: Array<Array<Field> | Field>;
-  renderComponent: (field: Field) => ReactElement;
+  FieldComponent: FC<{ field: Field }>;
 }
 
-export const DynamicLayout: FC<DynamicLayoutProps> = ({ fieldSet, renderComponent }) => {
+export const DynamicLayout: FC<DynamicLayoutProps> = ({ fieldSet, FieldComponent }) => {
   return (
     <Styled.Container>
       {fieldSet.map((d) => {
@@ -15,11 +15,15 @@ export const DynamicLayout: FC<DynamicLayoutProps> = ({ fieldSet, renderComponen
         return isArray ? (
           <Styled.Row key={`array-${d[0].id}`} $cols={d.length}>
             {d.map((v) => (
-              <Styled.Col key={v.id}>{renderComponent(v)}</Styled.Col>
+              <Styled.Col key={v.id}>
+                <FieldComponent field={v} />
+              </Styled.Col>
             ))}
           </Styled.Row>
         ) : (
-          <Styled.Col key={d.id}>{renderComponent(d)}</Styled.Col>
+          <Styled.Col key={d.id}>
+            <FieldComponent field={d} />
+          </Styled.Col>
         );
       })}
     </Styled.Container>

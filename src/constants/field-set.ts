@@ -16,7 +16,7 @@ export const FIELD_SET: Array<Array<Field> | Field> = [
     },
   ],
   {
-    id: "Email",
+    id: "email",
     required: true,
     type: "text",
   },
