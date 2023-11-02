@@ -19,7 +19,6 @@ export const FormField: FC<{ field: Field }> = ({ field }) => {
           name={field.id}
           aria-required={field.required}
           type="text"
-          aria-label={field.id}
           placeholder={field.placeholder ?? label}
           value={value ?? ""}
           onChange={handleChange}
@@ -31,7 +30,6 @@ export const FormField: FC<{ field: Field }> = ({ field }) => {
           id={field.id}
           name={field.id}
           aria-required={field.required}
-          aria-label={field.id}
           placeholder={field.placeholder ?? label}
           value={value ?? ""}
           onChange={handleChange}
@@ -43,7 +41,6 @@ export const FormField: FC<{ field: Field }> = ({ field }) => {
           id={field.id}
           name={field.id}
           aria-required={field.required}
-          aria-label="field.id"
           placeholder={field.placeholder ?? label}
           value={value}
           onChange={handleChange}
