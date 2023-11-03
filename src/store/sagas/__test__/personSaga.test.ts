@@ -1,4 +1,4 @@
-import { SET_PERSON } from "store/types";
+import { SET_PERSON } from "store";
 import { setPerson } from "../personSaga";
 import { Person } from "types";
 import { setPersonAction } from "store/features/personSlice";

@@ -2,14 +2,15 @@ import * as yup from "yup";
 import { Form, Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { DynamicLayout } from "components/DynamicLayout";
-import { Button, Card } from "components/common";
+import { Card } from "components/common";
 import { createYupSchema } from "./helpers";
 import { useAppDispatch, useAppSelector } from "hooks";
-import { SET_PERSON } from "store/types";
+import { SET_PERSON } from "store";
 import { routes } from "constants/routes";
 import { Field, Person } from "types";
 import { LabeledFormField } from "./components/LabeledFormField";
 import { FC } from "react";
+import * as Styled from "./index.styles";
 
 interface IndexProps {
   fieldSet: Array<Array<Field> | Field>;
@@ -32,9 +33,9 @@ export const Index: FC<IndexProps> = ({ fieldSet }) => {
       <Formik initialValues={data} validationSchema={validationSchema} onSubmit={handleSubmit}>
         <Form>
           <DynamicLayout fieldSet={fieldSet} FieldComponent={LabeledFormField} />
-          <Button type="submit" aria-label="submit">
+          <Styled.Submit type="submit" aria-label="submit">
             Submit
-          </Button>
+          </Styled.Submit>
         </Form>
       </Formik>
     </Card>
