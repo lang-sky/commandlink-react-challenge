@@ -6,7 +6,3 @@ export const Field = styled.div`
   background-color: #f5f5f1;
   border-radius: 4px;
 `;
-
-export const Label = styled.span`
-  font-weight: bold;
-`;

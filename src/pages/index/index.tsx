@@ -26,7 +26,8 @@ export const Index: FC<IndexProps> = ({ fieldSet }) => {
 
   useEffect(() => {
     const showConfirmationWarning = (e: BeforeUnloadEvent) => {
-      if (!formRef.current?.touched) {
+      const touched = formRef.current?.touched ?? {};
+      if (!Object.keys(touched).length) {
         return;
       }
 
@@ -48,6 +49,8 @@ export const Index: FC<IndexProps> = ({ fieldSet }) => {
     dispatch({ type: SET_PERSON, payload: values });
     navigate(routes.thankyou);
   };
+
+  console.log("formRef.current?.touched", formRef.current?.touched);
 
   return (
     <Card>

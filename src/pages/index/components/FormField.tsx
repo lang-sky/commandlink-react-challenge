@@ -9,6 +9,7 @@ export const FormField: FC<{ field: Field }> = ({ field }) => {
   const {
     values: { [field.id]: value },
     handleChange,
+    handleBlur,
   } = useFormikContext<Person>();
 
   switch (field.type) {
@@ -22,6 +23,7 @@ export const FormField: FC<{ field: Field }> = ({ field }) => {
           placeholder={field.placeholder ?? label}
           value={value ?? ""}
           onChange={handleChange}
+          onBlur={handleBlur}
         />
       );
     case "textarea":
@@ -33,6 +35,7 @@ export const FormField: FC<{ field: Field }> = ({ field }) => {
           placeholder={field.placeholder ?? label}
           value={value ?? ""}
           onChange={handleChange}
+          onBlur={handleBlur}
         />
       );
     case "select":
@@ -44,6 +47,7 @@ export const FormField: FC<{ field: Field }> = ({ field }) => {
           placeholder={field.placeholder ?? label}
           value={value}
           onChange={handleChange}
+          onBlur={handleBlur}
         >
           <Option value="">{field.placeholder ?? ""}</Option>
           {field.options.map((v) => (

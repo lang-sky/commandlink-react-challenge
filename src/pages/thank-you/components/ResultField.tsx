@@ -13,7 +13,7 @@ export const ResultField: FC<{ field: Field }> = ({ field }) => {
     case "textarea":
       return (
         <Styled.Field>
-          <Styled.Label>{label}:</Styled.Label>
+          <b>{label}:</b>
           {data[field.id]
             ? data[field.id]?.split("\n").map((p, idx) => <p key={idx}>{p}</p>)
             : "N/A"}
@@ -22,7 +22,7 @@ export const ResultField: FC<{ field: Field }> = ({ field }) => {
     default:
       return (
         <Styled.Field>
-          <Styled.Label>{label}:</Styled.Label> {data[field.id] || "N/A"}
+          <b>{label}:</b> {data[field.id] || "N/A"}
         </Styled.Field>
       );
   }
