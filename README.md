@@ -1,8 +1,12 @@
-# Dynamic Form
+# Recursive Dynamic Form
 
-This is to build a dynamic form.
+This project is to build a recursive dynamic form from recursive array of objects.
 
-[Requirements](./requirements/)
+```ts
+type RecursiveArray<T> = Array<T | RecursiveArray<T>>;
+```
+
+Requirements can be found [here](./requirements/)
 
 ## Steps to Run
 
@@ -15,12 +19,19 @@ yarn
 yarn start
 ```
 
-## Test Coverage
+## Unit Test by React Testing Library
 
 To get test coverage report
 
 ```bash
 yarn test --coverage .
+```
+
+## E2E Testing by Cypress
+
+```bash
+cp .env.example .env
+yarn cypress:open
 ```
 
 ## Reference
@@ -29,3 +40,5 @@ yarn test --coverage .
 - redux side effect by [redux-saga](https://redux-saga.js.org/)
 - styling by [styled-components](https://styled-components.com/)
 - form management and validation by [formik](https://formik.org/) and [yup](https://github.com/jquense/yup)
+- unit testing by [react testing library](https://testing-library.com/)
+- e2e testing by [cypress](https://docs.cypress.io/guides/overview/why-cypress/)
