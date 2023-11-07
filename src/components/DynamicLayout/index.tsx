@@ -1,6 +1,6 @@
 import { ComponentType, FC, Fragment } from "react";
 import * as Styled from "./index.styles";
-import { Field, RecursiveFieldArray } from "types/field";
+import { Field, RecursiveFieldArray } from "types";
 
 export interface DynamicLayoutProps {
   fieldSet: RecursiveFieldArray;

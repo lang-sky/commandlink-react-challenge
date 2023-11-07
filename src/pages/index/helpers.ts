@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { Field, RecursiveArray } from "types/field";
+import { Field, RecursiveArray } from "types";
 import { phoneRegExp } from "utils";
 
 export const flattenRecursiveArray = <T>(arr: RecursiveArray<T>): T[] => {

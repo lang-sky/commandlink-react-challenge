@@ -1,4 +1,4 @@
-import { RecursiveFieldArray } from "types/field";
+import { RecursiveFieldArray } from "types";
 
 export const FIELD_SET: RecursiveFieldArray = [
   [

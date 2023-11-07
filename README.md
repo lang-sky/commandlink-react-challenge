@@ -15,6 +15,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ```bash
 git clone https://github.com/lang-sky/commandlink-react-challenge.git
 cd commandlink-react-challenge
+nvm use 18
 yarn
 yarn start
 ```
