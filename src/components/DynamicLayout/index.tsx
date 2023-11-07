@@ -1,31 +1,27 @@
-import { ComponentType, FC } from "react";
+import { ComponentType, FC, Fragment } from "react";
 import * as Styled from "./index.styles";
-import { Field } from "types/field";
+import { Field, RecursiveFieldArray } from "types/field";
 
 export interface DynamicLayoutProps {
-  fieldSet: Array<Array<Field> | Field>;
+  fieldSet: RecursiveFieldArray;
   FieldComponent: ComponentType<{ field: Field }>;
+  depth?: number;
 }
 
-export const DynamicLayout: FC<DynamicLayoutProps> = ({ fieldSet, FieldComponent }) => {
+export const DynamicLayout: FC<DynamicLayoutProps> = ({ fieldSet, FieldComponent, depth = 0 }) => {
   return (
-    <Styled.Container>
-      {fieldSet.map((d) => {
-        const isArray = Array.isArray(d);
-        return isArray ? (
-          <Styled.Row key={`row-${d[0].id}`} $cols={d.length}>
-            {d.map((v) => (
-              <Styled.Col key={v.id}>
-                <FieldComponent field={v} />
-              </Styled.Col>
-            ))}
+    <Fragment>
+      {fieldSet.map((v, i) =>
+        Array.isArray(v) ? (
+          <Styled.Row key={`row-${depth}-${i}`} $cols={v.length}>
+            <DynamicLayout fieldSet={v} FieldComponent={FieldComponent} depth={depth + 1} />
           </Styled.Row>
         ) : (
-          <Styled.Col key={d.id}>
-            <FieldComponent field={d} />
+          <Styled.Col key={v.id}>
+            <FieldComponent field={v} />
           </Styled.Col>
-        );
-      })}
-    </Styled.Container>
+        )
+      )}
+    </Fragment>
   );
 };

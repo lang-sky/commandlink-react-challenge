@@ -6,20 +6,18 @@ import { reestablishJson } from "utils/testUtils";
 
 describe("createYupSchema", () => {
   test("should return correct Yup Schema", () => {
-    const fieldSet: (Field | Field[])[] = [
-      [
-        {
-          id: "firstName",
-          placeholder: "First name",
-          required: true,
-          type: "text",
-        },
-        {
-          id: "lastName",
-          placeholder: "Last name",
-          type: "text",
-        },
-      ],
+    const fieldSet: Field[] = [
+      {
+        id: "firstName",
+        placeholder: "First name",
+        required: true,
+        type: "text",
+      },
+      {
+        id: "lastName",
+        placeholder: "Last name",
+        type: "text",
+      },
       {
         id: "email",
         required: true,

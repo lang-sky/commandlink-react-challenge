@@ -1,6 +1,6 @@
-import { Field } from "types/field";
+import { RecursiveFieldArray } from "types/field";
 
-export const FIELD_SET: Array<Array<Field> | Field> = [
+export const FIELD_SET: RecursiveFieldArray = [
   [
     {
       id: "firstName",
@@ -30,14 +30,16 @@ export const FIELD_SET: Array<Array<Field> | Field> = [
       id: "city",
       type: "text",
     },
-    {
-      id: "state",
-      type: "text",
-    },
-    {
-      id: "zip",
-      type: "text",
-    },
+    [
+      {
+        id: "state",
+        type: "text",
+      },
+      {
+        id: "zip",
+        type: "text",
+      },
+    ],
   ],
   {
     id: "phone",

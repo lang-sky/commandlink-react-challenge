@@ -1,9 +1,20 @@
 import * as yup from "yup";
-import { Field } from "types/field";
+import { Field, RecursiveArray } from "types/field";
 import { phoneRegExp } from "utils";
 
-export const createYupSchema = (fieldSet: (Field | Field[])[]) => {
-  return fieldSet.flat().reduce((schema, field) => {
+export const flattenRecursiveArray = <T>(arr: RecursiveArray<T>): T[] => {
+  return arr.reduce<T[]>((result, current) => {
+    if (Array.isArray(current)) {
+      result.push(...flattenRecursiveArray(current));
+    } else {
+      result.push(current);
+    }
+    return result;
+  }, []);
+};
+
+export const createYupSchema = (fieldArray: Field[]) => {
+  return fieldArray.reduce((schema, field) => {
     const { id, required } = field;
 
     let validator = yup.string();

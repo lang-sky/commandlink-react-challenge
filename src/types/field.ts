@@ -14,3 +14,7 @@ export interface SelectField {
 }
 
 export type Field = GeneralField | SelectField;
+
+export type RecursiveArray<T> = Array<T | RecursiveArray<T>>;
+
+export type RecursiveFieldArray = RecursiveArray<Field>;
