@@ -20,7 +20,7 @@ describe("Index", () => {
         },
       ],
     });
-    const input = screen.getByRole("textbox", { name: "firstName" }) as HTMLInputElement;
+    const input = screen.getByRole("textbox", { name: "FirstName" }) as HTMLInputElement;
     await act(async () => {
       fireEvent.change(input, { target: { value: "john" } });
     });
@@ -71,7 +71,7 @@ describe("Index", () => {
       ],
     });
 
-    const input = screen.getByRole("textbox", { name: "phone" }) as HTMLInputElement;
+    const input = screen.getByRole("textbox", { name: "Phone" }) as HTMLInputElement;
     await act(async () => {
       fireEvent.change(input, { target: { value: "123" } });
     });
@@ -92,7 +92,7 @@ describe("Index", () => {
       ],
     });
 
-    const input = screen.getByRole("textbox", { name: "email" }) as HTMLInputElement;
+    const input = screen.getByRole("textbox", { name: "Email" }) as HTMLInputElement;
     await act(async () => {
       fireEvent.change(input, { target: { value: "invalidemail" } });
     });
