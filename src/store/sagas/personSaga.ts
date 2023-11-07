@@ -1,7 +1,7 @@
 import { PayloadAction } from "@reduxjs/toolkit";
-import { put, takeLatest, all } from "redux-saga/effects";
+import { put, takeLatest } from "redux-saga/effects";
 import { setPersonAction } from "store/features/personSlice";
-import { SET_PERSON } from "store/types";
+import { SET_PERSON } from "store";
 import { Person } from "types";
 
 export function* setPerson(action: PayloadAction<Person>) {
@@ -9,5 +9,5 @@ export function* setPerson(action: PayloadAction<Person>) {
 }
 
 export function* personSaga() {
-  yield all([takeLatest(SET_PERSON, setPerson)]);
+  yield takeLatest(SET_PERSON, setPerson);
 }

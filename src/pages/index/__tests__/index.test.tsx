@@ -4,7 +4,7 @@ import { renderWithEverything } from "utils/testUtils";
 import { act } from "react-dom/test-utils";
 import { Field } from "types";
 import userEvent from "@testing-library/user-event";
-import { SET_PERSON } from "store/types";
+import { SET_PERSON } from "store";
 
 const setup = (props: { fieldSet: Array<Array<Field> | Field> }) => {
   return renderWithEverything(<Index fieldSet={props.fieldSet} />);
